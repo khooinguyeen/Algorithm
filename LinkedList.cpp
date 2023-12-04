@@ -8,13 +8,38 @@ class Node
         Node* next;
 };
 
-void push(Node** head, int new_data)
+void insert(Node** head, int new_data)
 {
     Node* new_node = new Node();
     new_node->data = new_data;
     new_node->next = *head;
     *head = new_node;
 }
+
+Node *item_ahead(Node *head, Node *x)
+{
+    if ((head == NULL) || (head->next == NULL))
+        return (NULL);
+    if (head->next == x)
+        return (head);
+    else
+        return (item_ahead(head->next, x));
+}
+
+void remove(Node **head, Node **x)
+{
+    Node *p; // Item pointer
+    Node *pred; // predecessor pointer
+
+    p = *head;
+    pred = item_ahead(*head, *x);
+    if (pred == NULL)
+        *head = p->next;
+    else
+        pred->next = (*x)->next;
+    delete *x;    
+}
+
 
 void display(Node** head) 
 {
@@ -41,18 +66,20 @@ Node *search(Node* head, int x)
 int main()
 {
     Node* head = NULL;
-    push(&head, 1);
-    push(&head, 3);
-    push(&head, 1);
-    push(&head, 2);
-    push(&head, 1);
-    push(&head, 0);
+    insert(&head, 1);
+    insert(&head, 3);
+    insert(&head, 1);
+    insert(&head, 2);
+    insert(&head, 1);
+    insert(&head, 0);
     display(&head);
 
     cout << endl;
 
     Node* res = search(head, 3);
     cout << "search result: " << res << " " << res->data << endl;
-
+    cout << "after remove the node containing data 3 \n";
+    remove(&head, &res);
+    display(&head);
     return 0;
 }
