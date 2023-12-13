@@ -1,5 +1,5 @@
 #define PQ_SIZE 10000
-#include <bits/stdc++.h>
+#include <iostream>
 
 typedef struct
 {
