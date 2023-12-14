@@ -42,7 +42,7 @@ void bubble_up(priority_queue *q, int p)
 
     if (q->q[pq_parent(p)] > q->q[p])
     {
-        pq_swap(q, p, pq_parent(p));
+        //pq_swap(q, p, pq_parent(p));
         bubble_up(q, pq_parent(p));
     }
 }
@@ -99,7 +99,7 @@ void bubble_down(priority_queue *q, int p)
     }
     if (min_index != p)
     {
-        pq_swap(q, p, min_index);
+        //pq_swap(q, p, min_index);
         bubble_down(q, min_index);
     }
 }
