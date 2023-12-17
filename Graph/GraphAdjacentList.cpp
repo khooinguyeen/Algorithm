@@ -1,29 +1,11 @@
-#include <iostream>
-#define MAXV 101
-using namespace std;
-
-struct edgeNode
-{
-    int y;                  // Adjacency info
-    int weight;             // edge weight
-    edgeNode *next;         //next edge in list
-};
-
-struct graph
-{
-    edgeNode *edges[MAXV];  // adjacency info
-    int degree[MAXV];       // outdegree of each vertices
-    int nvertices;          // number of vertices
-    int nedges;             // number of edges
-    int directed;           // is the graph directed
-};
+#include "GraphStruct.h"
 
 void initialize_graph(graph *g, bool directed)
 {
     int i;
 
-    g->nvertices = 0;
-    g->nedges = 0;
+    g->nvertices = 0;       // đỉnh
+    g->nedges = 0;          // cạnh
     g->directed = directed;
 
     for (i = 1; i <= MAXV; i++)
@@ -35,9 +17,8 @@ void initialize_graph(graph *g, bool directed)
 
 void insert_edge(graph *g, int x, int y, bool directed)
 {
-    edgeNode *p;
+    edgeNode *p = new edgeNode;
 
-    p = new edgeNode;
     p->weight = 0;
     p->y = y;
     p->next = g->edges[x];
@@ -81,23 +62,4 @@ void print_graph(graph *g)
         }
         cout << endl;
     }
-}
-
-int main()
-{
-    graph g;
-    bool directed;
-
-    // Prompt user for directed or undirected graph
-    cout << "Enter 1 for directed graph, 0 for undirected graph: ";
-    cin >> directed;
-
-    // Read graph from input
-    read_graph(&g, directed);
-
-    // Print the graph
-    cout << "\nGraph:\n";
-    print_graph(&g);
-
-    return 0;
 }
