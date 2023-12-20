@@ -1,6 +1,7 @@
 NAME = GraphTest.o
 
 SRC =	BreadthFirstSearch.cpp \
+	DepthFirstSearch.cpp \
 	GraphAdjacentList.cpp \
 	main.cpp
 
@@ -13,3 +14,5 @@ $(NAME):
 
 clean:
 	rm -f $(NAME)
+
+re:	clean all

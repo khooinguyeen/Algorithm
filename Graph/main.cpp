@@ -19,5 +19,8 @@ int main()
     cout << "\nBFS Traversal:\n";
     bfs(&g, start_vertex);
 
+    cout << "\nDFS Traversal:\n";
+    dfs(&g, start_vertex);
+
     return (0);
 }
