@@ -13,3 +13,7 @@ Searching for a key is similar to the insert operation. However, It only compare
 - In the second case, the search terminates without examining all the characters of the key, since the key is not present in the trie.
 
 Note: Insert and search costs O(key_length), however, the memory requirements of Trie is O(ALPHABET_SIZE * key_length * N) where N is the number of keys in Trie. There are efficient representations of trie nodes (e.g. compressed trie, ternary search tree, etc.) to minimize the memory requirements of the trie.
+
+Operation	Time Complexity	Auxiliary Space
+Insertion	O(n)	        O(n*m)
+Searching	O(n)	        O(1)

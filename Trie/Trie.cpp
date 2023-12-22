@@ -1,3 +1,13 @@
+/*
+Operation	Time Complexity	Auxiliary Space
+Insertion	O(n)	        O(n*m)
+Searching	O(n)	        O(1)
+
+Note: Insert and search costs O(key_length), however, the memory requirements of Trie is O(ALPHABET_SIZE * key_length * N) 
+where N is the number of keys in Trie. There are efficient representations of trie nodes (e.g. compressed trie, ternary search 
+tree, etc.) to minimize the memory requirements of the trie.
+*/
+
 #include <iostream>
 #include <string>
 using namespace std;
