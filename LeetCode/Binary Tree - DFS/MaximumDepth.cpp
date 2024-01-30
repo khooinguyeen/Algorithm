@@ -25,6 +25,50 @@ struct TreeNode {
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
-        
+        if (root == nullptr)
+            return (0);
+        int l = 0, r = 0;
+        if (root->left != nullptr)
+            l = 1 + maxDepth(root->left);
+        else
+            l += 1;
+        if (root->right != nullptr)
+            r = 1 + maxDepth(root->right);
+        else
+            r += 1;
+        return max(l, r);
     }
 };
+
+class Solution2 {
+public:
+    int maxDepth(TreeNode* root) {
+        if (!root)
+            return (0);
+        return (max(maxDepth(root->left), maxDepth(root->right)) + 1);
+            
+    }
+};
+
+int main()
+{
+    TreeNode* root = new TreeNode(4,
+        new TreeNode(2,
+            new TreeNode(1),
+            new TreeNode(3)
+        ),
+        new TreeNode(6,
+            new TreeNode(5),
+            new TreeNode(7,
+                new TreeNode(8),
+                nullptr)
+        )
+    );
+
+    Solution solution;
+    cout << solution.maxDepth(root) << endl;
+    Solution2 solution2;
+    cout << solution2.maxDepth(root) << endl;
+    delete root;
+    return (0);
+}
